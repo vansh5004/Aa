@@ -182,7 +182,7 @@ Nᴀᴍᴇ - {}"""
 
 ➣ my UPI id amanvishwakarma2626@ibl
 
-Send screenshot to our admin or owner Or contact me to send a screenshot/n/n@BOT_OWNER26</b>
+Send screenshot to our admin or owner Or contact me to send a screenshot @BOT_OWNER26</b>
 """
 
     REQINFO = """
