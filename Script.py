@@ -182,7 +182,7 @@ Nᴀᴍᴇ - {}"""
 
 ➣ my UPI id amanvishwakarma2626@ibl
 
-Any Doubts or Not Connecting? Contact Me </b>
+Any Doubts or Connecting? Contact Me @BOT_OWNER26 </b>
 """
 
     REQINFO = """
