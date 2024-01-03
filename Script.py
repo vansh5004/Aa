@@ -462,7 +462,7 @@ Aᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs:
 # dont remove my logo 
     PAID_TXT = """<b>Join a Prime group to get free movie without any ads
 Your time is valuable, Stop watching ads and simply avoid the stupidity
-<a href='https://t.me/Latestmoviesupdates0'>➹ 🅰︎🅳︎ 🅵︎🆁︎🅴︎🅴︎ 🅶︎🆁︎🅾︎🆄︎🅿︎ ➹</a>
+<a href='https://t.me/+em1wsPy9pQs3Y2Zl'>➹ 🅰︎🅳︎ 🅵︎🆁︎🅴︎🅴︎ 🅶︎🆁︎🅾︎🆄︎🅿︎ ➹</a>
 
 Prime Membership Progress
 
