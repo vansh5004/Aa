@@ -1591,7 +1591,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "shortlink_info":
         buttons = [[
-            InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')
+            InlineKeyboardButton('• Fʀᴇᴇ •', callback_data='check'),
+            InlineKeyboardButton('• Bʀᴏɴᴢᴇ •', callback_data='plan1') 
+        ],[
+            InlineKeyboardButton('• Sɪʟᴠᴇʀ •', callback_data='plan2'),
+            InlineKeyboardButton('• Gᴏʟᴅ •', callback_data='plan3') 
+        ],[
+            InlineKeyboardButton('• Dᴀɪᴍᴏɴᴅ •', callback_data='plan4'),
+            InlineKeyboardButton('• Oᴛʜᴇʀ •', callback_data='plan5') 
+        ],[
+            InlineKeyboardButton('⇋ ʙᴀᴄᴋ ⇋', callback_data='start'),
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -1614,6 +1623,168 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
+
+    elif query.data == "check":
+        buttons = [[
+            InlineKeyboardButton('• Cʟɪᴄᴋ Hᴇʀᴇ Tᴏ ʙᴜʏ Pʀᴇᴍɪᴜᴍ •', callback_data='payment'), 
+        ],[
+            InlineKeyboardButton('⇋ ʙᴀᴄᴋ ⇋', callback_data='kushal'),
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text="▶ ▷ ▷"
+        )
+        await query.message.edit_text(
+            text="▶ ▶ ▷"
+        )
+        await query.message.edit_text(
+            text=" ▶ ▶ ▶"
+        )
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto("https://graph.org/file/21c9e45d8e50442b24707.jpg")
+        ) 
+        await query.message.edit_text(
+            text=script.CHECK_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "plan5":
+        buttons = [[
+            InlineKeyboardButton('• Cʟɪᴄᴋ Hᴇʀᴇ Tᴏ ʙᴜʏ Pʀᴇᴍɪᴜᴍ •', callback_data='payment'), 
+        ],[
+            InlineKeyboardButton('⇋ ʙᴀᴄᴋ ⇋', callback_data='kushal')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text="▶ ▷ ▷"
+        )
+        await query.message.edit_text(
+            text="▶ ▶ ▷"
+        )
+        await query.message.edit_text(
+            text="▶ ▶ ▶"
+        )
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto("https://graph.org/file/21c9e45d8e50442b24707.jpg")
+        ) 
+        await query.message.edit_text(
+            text=script.PLAN5_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        ) 
+    elif query.data == "plan4":
+        buttons = [[
+            InlineKeyboardButton('• Cʟɪᴄᴋ Hᴇʀᴇ Tᴏ ʙᴜʏ Pʀᴇᴍɪᴜᴍ •', callback_data='payment'), 
+        ],[
+            InlineKeyboardButton('Bᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ', callback_data='kushal')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text="▶ ▷ ▷"
+        )
+        await query.message.edit_text(
+            text="▶ ▶ ▷"
+        )
+        await query.message.edit_text(
+            text="▶ ▶ ▶"
+        )
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto("https://graph.org/file/21c9e45d8e50442b24707.jpg")
+        ) 
+        await query.message.edit_text(
+            text=script.PLAN4_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        ) 
+    elif query.data == "plan1":
+        buttons = [[
+            InlineKeyboardButton('• Cʟɪᴄᴋ Hᴇʀᴇ Tᴏ ʙᴜʏ Pʀᴇᴍɪᴜᴍ •', callback_data='payment'), 
+        ],[
+            InlineKeyboardButton('Bᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ', callback_data='kushal')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text="▶ ▷ ▷"
+        )
+        await query.message.edit_text(
+            text="▶ ▶ ▷"
+        )
+        await query.message.edit_text(
+            text="▶ ▶ ▶"
+        )
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto("https://graph.org/file/21c9e45d8e50442b24707.jpg")
+        ) 
+        await query.message.edit_text(
+            text=script.PLAN1_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        ) 
+    elif query.data == "plan2":
+        buttons = [[
+            InlineKeyboardButton('• Cʟɪᴄᴋ Hᴇʀᴇ Tᴏ ʙᴜʏ Pʀᴇᴍɪᴜᴍ •', callback_data='payment'), 
+        ],[
+            InlineKeyboardButton('Bᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ', callback_data='kushal')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text="▶ ▷ ▷"
+        )
+        await query.message.edit_text(
+            text="▶ ▶ ▷"
+        )
+        await query.message.edit_text(
+            text="▶ ▶ ▶"
+        )
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto("https://graph.org/file/21c9e45d8e50442b24707.jpg")
+        ) 
+        await query.message.edit_text(
+            text=script.PLAN2_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        ) 
+    elif query.data == "plan3":
+        buttons = [[
+            InlineKeyboardButton('• Cʟɪᴄᴋ Hᴇʀᴇ Tᴏ ʙᴜʏ Pʀᴇᴍɪᴜᴍ •', callback_data='payment'), 
+        ],[
+            InlineKeyboardButton('Bᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ', callback_data='kushal')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text="▶ ▷ ▷"
+        )
+        await query.message.edit_text(
+            text="▶ ▶ ▷"
+        )
+        await query.message.edit_text(
+            text="▶ ▶ ▶"
+        )
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto("https://graph.org/file/21c9e45d8e50442b24707.jpg")
+        ) 
+        await query.message.edit_text(
+            text=script.PLAN3_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        ) 
+
+
+
+
+    # Code Add by Vansh-Yadav Telegram Username - @None_090 paid repo and repo editing available
     elif query.data == "tele":
         buttons = [[
             InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')
