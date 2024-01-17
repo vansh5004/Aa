@@ -1002,7 +1002,7 @@ async def shortlink(bot, message):
 
 
 # add your premium user member telegram user id you are not enter user id /myplan command not work
-   premium_user_ids = ["2020224264", "5505349428"]  # Add more user IDs as needed
+ #  premium_user_ids = ["2020224264", "5505349428"]  # Add more user IDs as needed
 
 def send_telegram_message(chat_id, message):
     updater.bot.send_message(chat_id=chat_id, text=message)
@@ -1010,7 +1010,7 @@ def send_telegram_message(chat_id, message):
 @Client.on_message(filters.command("myplan"))
 async def myplan(bot, message, update: Update, context: CallbackContext):
     user_id = str(update.message.from_user.id)
-    if user_id in premium_user_ids:
+    if user_id in PREMIUM_USER:
         message = f"ʜᴇʏ {user_id},\n\nYᴏᴜ Hᴀᴠᴇ Aᴄᴛɪᴠᴇ Pʀᴇᴍɪᴜᴍ Pʟᴀɴ. Eɴɪᴏʏ Uɴʟɪᴍɪᴛᴇᴅ Mᴏᴠɪᴇ Wɪᴛʜᴏᴜᴛ Aᴅs."
         send_telegram_message(update.message.chat_id, message)
   #      sleep(1)  # Sleep for 1 second to avoid rate limiting
