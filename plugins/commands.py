@@ -1102,7 +1102,7 @@ async def settutorial(bot, message):
         return await message.reply("<b>You entered Incorrect Format\n\nFormat: /set_tutorial your tutorial link</b>")
 
 @Client.on_message(filters.command("plan") & filters.user(ADMINS))  # & filters.user(ADMINS))  code code use this command use only admin ( use this command all remove this code  & filters.user(ADMINS)  )
-async def plan(update, context):
+async def plan(bot, message):
     query = update.callback_query
 
     # Replace 'shortlink_info' with your actual callback function for the Premium button
