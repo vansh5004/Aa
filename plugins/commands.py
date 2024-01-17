@@ -1020,8 +1020,8 @@ def send_telegram_message(chat_id, message):
  #   await message.reply_text(new_message)
     
 
-@Client.on_message(filters.command('myplan'))
-async def myplan(bot, message):
+@Client.on_message(filters.private & filters.command(["myplan"]))
+async def myplan(client,message):
     user_id = event.from_id
     if user_id in PREMIUM_USER:
         message = f"Hey {user_id}, You are subscribed to the premium plan."
