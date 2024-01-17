@@ -1101,9 +1101,10 @@ async def settutorial(bot, message):
     else:
         return await message.reply("<b>You entered Incorrect Format\n\nFormat: /set_tutorial your tutorial link</b>")
 
-@Client.on_message(filters.command("plan") & filters.user(ADMINS))  # & filters.user(ADMINS))  code code use this command use only admin ( use this command all remove this code  & filters.user(ADMINS)  )
+@Client.on_message(filters.command("plan"))
 async def plan(bot, message):
-    query = update.callback_query
+    # You can use message.chat.id to get the chat ID
+    chat_id = message.chat.id
 
     # Replace 'shortlink_info' with your actual callback function for the Premium button
     buttons = [
@@ -1112,19 +1113,17 @@ async def plan(bot, message):
 
     reply_markup = InlineKeyboardMarkup(buttons)
 
-    await context.bot.edit_message_media(
-        chat_id=query.message.chat.id,
-        message_id=query.message.message_id,
-        media=InputMediaPhoto(random.choice(PICS))
-    )
-
-    await query.message.edit_text(
-        text=script.SSHORTLINK_INFO.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
+    # Use message.message_id instead of query.message.message_id
+    await bot.send_photo(
+        chat_id=chat_id,
+        photo=random.choice(PICS),
+        caption=script.SHORTLINK_INFO.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
         reply_markup=reply_markup,
         parse_mode=ParseMode.HTML
     )
-
-    await query.answer("This Code Added By Vansh (@None_090)")  # Replace with your actual alert message
+    
+    await query.answer("This Code Added By Vansh (@None_090)")
+    
 
 @Client.on_message(filters.command("remove_tutorial"))
 async def removetutorial(bot, message):
