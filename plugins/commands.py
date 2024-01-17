@@ -1020,6 +1020,16 @@ def send_telegram_message(chat_id, message):
  #   await message.reply_text(new_message)
     
 
+@Client.on_message(filters.command('myplan'))
+async def myplan(bot, message):
+    user_id = event.from_id
+    if user_id in PREMIUM_USER:
+        message = f"Hey {user_id}, You are subscribed to the premium plan."
+    else:
+        message = "Sorry, you are not a premium user. Subscribe to the premium plan for exclusive content."
+    
+    # Send the message
+    await event.respond(message)
 
 @Client.on_message(filters.command("setshortlinkoff") & filters.user(ADMINS))
 async def offshortlink(bot, message):
