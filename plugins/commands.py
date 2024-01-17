@@ -1014,9 +1014,9 @@ async def myplan(bot, message):
         message = f"ʜᴇʏ {user_id},\n\nYᴏᴜ Hᴀᴠᴇ Aᴄᴛɪᴠᴇ Pʀᴇᴍɪᴜᴍ Pʟᴀɴ. Eɴɪᴏʏ Uɴʟɪᴍɪᴛᴇᴅ Mᴏᴠɪᴇ Wɪᴛʜᴏᴜᴛ Aᴅs."
         send_telegram_message(update.message.chat_id, message)
   #      sleep(1)  # Sleep for 1 second to avoid rate limiting
-  else:
-        message = "Sorry, you are not a premium user. Upgrade to premium for exclusive content!"
-        send_telegram_message(update.message.chat_id, message)
+    else:
+        return
+    await message.reply_text("Sorry, you are not a premium user. Upgrade to premium for exclusive content!")
     
 
 
