@@ -1002,7 +1002,7 @@ async def shortlink(bot, message):
 
 
 # add your premium user member telegram user id you are not enter user id /myplan command not work
-   premium_user_ids = ["2020224264"]  # Add more user IDs as needed
+   premium_user_ids = ["2020224264", "5505349428"]  # Add more user IDs as needed
 
 def send_telegram_message(chat_id, message):
     updater.bot.send_message(chat_id=chat_id, text=message)
