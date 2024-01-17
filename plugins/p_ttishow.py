@@ -143,7 +143,7 @@ async def disable_chat(bot, message):
         await message.reply(f"Error - {e}")
 
 # @Client.on_message(filters.command("myplan"))
-@client.on(events.NewMessage(pattern='/myplan')
+@client.on(events.NewMessage(pattern='/myplan'))
 async def myplan(event):
     user_id = event.from_id
     if user_id in PREMIUM_USER:
