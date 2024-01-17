@@ -1101,6 +1101,29 @@ async def settutorial(bot, message):
     else:
         return await message.reply("<b>You entered Incorrect Format\n\nFormat: /set_tutorial your tutorial link</b>")
 
+@Client.on_message(filters.command("plan") & filters.user(ADMINS))  # & filters.user(ADMINS))  code code use this command use only admin ( use this command all remove this code  & filters.user(ADMINS)  )
+async def start(update: Update, context: CallbackContext):
+    # This function will be called when the /start command is issued
+    user = update.effective_user
+    await update.message.reply_html(
+        fr"Hi {user.mention_html()}!",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton('Premium', callback_data="shortlink_info")] # callback change ( your premium button callback funstion thanks use vansh yadav code tleegram username @none_090)
+            ]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto(random.choice(PICS))
+        )
+        await query.message.edit_text(
+            text=script.START_TXT.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+        await query.answer(MSG_ALRT)
+
 @Client.on_message(filters.command("remove_tutorial"))
 async def removetutorial(bot, message):
     userid = message.from_user.id if message.from_user else None
