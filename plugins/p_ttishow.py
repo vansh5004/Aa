@@ -142,17 +142,6 @@ async def disable_chat(bot, message):
     except Exception as e:
         await message.reply(f"Error - {e}")
 
-# @Client.on_message(filters.command("myplan"))
-@Client.on_message(filters.command('myplan'))
-async def myplan(bot, message):
-    user_id = event.from_id
-    if user_id in PREMIUM_USER:
-        message = f"Hey {user_id}, You are subscribed to the premium plan."
-    else:
-        message = "Sorry, you are not a premium user. Subscribe to the premium plan for exclusive content."
-    
-    # Send the message
-    await event.respond(message)
 
 @Client.on_message(filters.command('enable') & filters.user(ADMINS))
 async def re_enable_chat(bot, message):
