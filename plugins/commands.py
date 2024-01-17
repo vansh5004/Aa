@@ -2,6 +2,8 @@ import os
 import logging
 import random
 import asyncio
+import requests  # this code added by vansh yadav telegram username @none_090
+from time import sleep # this code edded by vansh yadav telegram usernaem @None_090
 from Script import script
 from pyrogram import Client, filters, enums
 from pyrogram.errors import ChatAdminRequired, FloodWait
@@ -978,7 +980,7 @@ async def shortlink(bot, message):
         grpid = message.chat.id
         title = message.chat.title
     else:
-        return   # /plan command code added by vansh yadav paid repo and repo editing available dm me t
+        return   # /plan command code added by vansh yadav paid repo and repo editing available dm me telegran username @none_090
     data = message.text
     userid = message.from_user.id
     user = await bot.get_chat_member(grpid, userid)
@@ -997,7 +999,27 @@ async def shortlink(bot, message):
     await save_group_settings(grpid, 'shortlink_api', api)
     await save_group_settings(grpid, 'is_shortlink', True)
     await reply.edit_text(f"<b>Successfully added shortlink API for {title}.\n\nCurrent Shortlink Website: <code>{shortlink_url}</code>\nCurrent API: <code>{api}</code></b>")
+
+
+# add your premium user member telegram user id you are not enter user id /myplan command not work
+   premium_user_ids = ["243434934693", "387498374"]  # Add more user IDs as needed
+
+def send_telegram_message(chat_id, message):
+    updater.bot.send_message(chat_id=chat_id, text=message)
+
+@Client.on_message(filters.command("myplan"))
+async def myplan(bot, message, update: Update, context: CallbackContext):
+    user_id = str(update.message.from_user.id)
+    if user_id in premium_user_ids:
+        message = f"ʜᴇʏ {user_id},\n\nYᴏᴜ Hᴀᴠᴇ Aᴄᴛɪᴠᴇ Pʀᴇᴍɪᴜᴍ Pʟᴀɴ. Eɴɪᴏʏ Uɴʟɪᴍɪᴛᴇᴅ Mᴏᴠɪᴇ Wɪᴛʜᴏᴜᴛ Aᴅs."
+        send_telegram_message(update.message.chat_id, message)
+  #      sleep(1)  # Sleep for 1 second to avoid rate limiting
+  else:
+        message = "Sorry, you are not a premium user. Upgrade to premium for exclusive content!"
+        send_telegram_message(update.message.chat_id, message)
     
+
+
 @Client.on_message(filters.command("setshortlinkoff") & filters.user(ADMINS))
 async def offshortlink(bot, message):
     chat_type = message.chat.type
@@ -1100,13 +1122,18 @@ async def settutorial(bot, message):
         await reply.edit_text(f"<b>Successfully Added Tutorial\n\nHere is your tutorial link for your group {title} - <code>{tutorial}</code></b>")
     else:
         return await message.reply("<b>You entered Incorrect Format\n\nFormat: /set_tutorial your tutorial link</b>")
+
+
+
 # this plan command code added y vansh yadav telegram username @none_090
 @Client.on_message(filters.private & filters.command(["plan"]))
 async def plan(client,message):
+    photo_file_id = "https://graph.org/file/66e0fc2970bda9316dd95.jpg"
     reply_markup = InlineKeyboardMarkup(
-       		[ [ InlineKeyboardButton('🎉 premium🎉', callback_data="shortlink_info") ]   ])
-    await message.reply_text(f"Join a Prime group to get free movie without any ads \n\n- 30ʀs - 1 ᴡᴇᴇᴋ\n- 50ʀs - 1 ᴍᴏɴᴛʜs\n- 120ʀs - 3 ᴍᴏɴᴛʜs\n- 200ʀs - 6 ᴍᴏɴᴛʜs\n- 400ʀs - 1 \n Your Upi Id",reply_to_message_id = message.id,reply_markup=reply_markup,)
-    
+       		[ [ InlineKeyboardButton('Buy Premium',url="https://t.me/none_090") ]   ])
+    await message.reply_text(f"🎖️ ᴀᴠᴀɪʟᴀʙʟᴇ ᴘʟᴀɴs \n\n● 10₹ ➛ ʙʀᴏɴᴢᴇ ᴘʟᴀɴ » 7 ᴅᴀʏꜱ\n● 60₹ ➛ ꜱɪʟᴠᴇʀ ᴘʟᴀɴ » 30 ᴅᴀʏꜱ\n● 180₹ ➛ ɢᴏʟᴅ ᴘʟᴀɴ » 90 ᴅᴀʏꜱ\n● 250₹ ➛ ᴘʟᴀᴛɪɴᴜᴍ ᴘʟᴀɴ » 180 ᴅᴀʏꜱ\n● 400₹ ➛ ᴅɪᴀᴍᴏɴᴅ ᴘʟᴀɴ » 365 ᴅᴀʏꜱ\n\n💵 ᴜᴘɪ ɪᴅ - UPI_ID@PAYTM\n\n⚜️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ ʙʏ ᴜꜱɪɴɢ : /myplan\n\n‼️ ᴍᴜsᴛ sᴇɴᴅ sᴄʀᴇᴇɴsʜᴏᴛ ᴀғᴛᴇʀ ᴘᴀʏᴍᴇɴᴛ.",reply_to_message_id = message.id,reply_markup=reply_markup,)
+
+
 
 @Client.on_message(filters.command("remove_tutorial"))
 async def removetutorial(bot, message):
