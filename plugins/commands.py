@@ -1102,7 +1102,7 @@ async def settutorial(bot, message):
         return await message.reply("<b>You entered Incorrect Format\n\nFormat: /set_tutorial your tutorial link</b>")
 
 @Client.on_message(filters.command("plan") & filters.user(ADMINS))  # & filters.user(ADMINS))  code code use this command use only admin ( use this command all remove this code  & filters.user(ADMINS)  )
-async def start(update: Update, context: CallbackContext):
+async def plan(bot, message):
     # This function will be called when the /start command is issued
     user = update.effective_user
     await update.message.reply_html(
@@ -1118,7 +1118,7 @@ async def start(update: Update, context: CallbackContext):
             InputMediaPhoto(random.choice(PICS))
         )
         await query.message.edit_text(
-            text=script.START_TXT.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
+            text=script.SHORTLINK_INFO.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
