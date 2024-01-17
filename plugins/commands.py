@@ -1102,7 +1102,7 @@ async def settutorial(bot, message):
         return await message.reply("<b>You entered Incorrect Format\n\nFormat: /set_tutorial your tutorial link</b>")
 
 @Client.on_message(filters.command("plan"))
-async def plan(bot, message):
+async def plan(client, message):
     # You can use message.chat.id to get the chat ID
     chat_id = message.chat.id
 
