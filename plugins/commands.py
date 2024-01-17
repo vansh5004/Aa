@@ -978,7 +978,7 @@ async def shortlink(bot, message):
         grpid = message.chat.id
         title = message.chat.title
     else:
-        return
+        return   # /plan command code added by vansh yadav paid repo and repo editing available dm me t
     data = message.text
     userid = message.from_user.id
     user = await bot.get_chat_member(grpid, userid)
@@ -1100,12 +1100,12 @@ async def settutorial(bot, message):
         await reply.edit_text(f"<b>Successfully Added Tutorial\n\nHere is your tutorial link for your group {title} - <code>{tutorial}</code></b>")
     else:
         return await message.reply("<b>You entered Incorrect Format\n\nFormat: /set_tutorial your tutorial link</b>")
-
-@Client.on_message(filters.private & filters.command(["refer"]))
-async def refer(client,message):
+# this plan command code added y vansh yadav telegram username @none_090
+@Client.on_message(filters.private & filters.command(["plan"]))
+async def plan(client,message):
     reply_markup = InlineKeyboardMarkup(
        		[ [ InlineKeyboardButton('🎉 premium🎉', callback_data="shortlink_info") ]   ])
-    await message.reply_text(f"Add Your Auto filter bot premium Price and enjoy",reply_to_message_id = message.id,reply_markup=reply_markup,)
+    await message.reply_text(f"Join a Prime group to get free movie without any ads \n\n- 30ʀs - 1 ᴡᴇᴇᴋ\n- 50ʀs - 1 ᴍᴏɴᴛʜs\n- 120ʀs - 3 ᴍᴏɴᴛʜs\n- 200ʀs - 6 ᴍᴏɴᴛʜs\n- 400ʀs - 1 \n Your Upi Id",reply_to_message_id = message.id,reply_markup=reply_markup,)
     
 
 @Client.on_message(filters.command("remove_tutorial"))
