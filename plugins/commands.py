@@ -1007,17 +1007,17 @@ async def shortlink(bot, message):
 def send_telegram_message(chat_id, message):
     updater.bot.send_message(chat_id=chat_id, text=message)
 
-@Client.on_message(filters.command("myplan"))
-async def myplan(client,message):
-    user_id = str(update.message.from_user.id)
-    if user_id in PREMIUM_USER:
-        message = f"ʜᴇʏ {user_id},\n\nYᴏᴜ Hᴀᴠᴇ Aᴄᴛɪᴠᴇ Pʀᴇᴍɪᴜᴍ Pʟᴀɴ. Eɴɪᴏʏ Uɴʟɪᴍɪᴛᴇᴅ Mᴏᴠɪᴇ Wɪᴛʜᴏᴜᴛ Aᴅs."
-        send_telegram_message(update.message.chat_id, message)
+#@Client.on_message(filters.command("myplan"))
+#async def myplan(bot,message):
+ #   user_id = update.message.from_user.id if message.from_user else None
+  #  if user_id in PREMIUM_USER:
+   #     message = f"ʜᴇʏ {user_id},\n\nYᴏᴜ Hᴀᴠᴇ Aᴄᴛɪᴠᴇ Pʀᴇᴍɪᴜᴍ Pʟᴀɴ. Eɴɪᴏʏ Uɴʟɪᴍɪᴛᴇᴅ Mᴏᴠɪᴇ Wɪᴛʜᴏᴜᴛ Aᴅs."
+    #    send_telegram_message(update.message.chat_id, message)
   #      sleep(1)  # Sleep for 1 second to avoid rate limiting
-    else:
-        return
-    new_message = "Sorry, you are not a premium user. Upgrade to premium for exclusive content!"
-    await message.reply_text(new_message)
+  #  else:
+  #      return
+  #  new_message = "Sorry, you are not a premium user. Upgrade to premium for exclusive content!"
+ #   await message.reply_text(new_message)
     
 
 
