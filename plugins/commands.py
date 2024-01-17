@@ -1008,7 +1008,7 @@ def send_telegram_message(chat_id, message):
     updater.bot.send_message(chat_id=chat_id, text=message)
 
 @Client.on_message(filters.command("myplan"))
-async def myplan(bot, message, update: Update, context: CallbackContext):
+async def myplan(bot, message):
     user_id = str(update.message.from_user.id)
     if user_id in PREMIUM_USER:
         message = f"ʜᴇʏ {user_id},\n\nYᴏᴜ Hᴀᴠᴇ Aᴄᴛɪᴠᴇ Pʀᴇᴍɪᴜᴍ Pʟᴀɴ. Eɴɪᴏʏ Uɴʟɪᴍɪᴛᴇᴅ Mᴏᴠɪᴇ Wɪᴛʜᴏᴜᴛ Aᴅs."
