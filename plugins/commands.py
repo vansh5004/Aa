@@ -1101,28 +1101,11 @@ async def settutorial(bot, message):
     else:
         return await message.reply("<b>You entered Incorrect Format\n\nFormat: /set_tutorial your tutorial link</b>")
 
-@Client.on_message(filters.command("plan"))
-async def plan(client, message):
-    # You can use message.chat.id to get the chat ID
-    chat_id = message.chat.id
-
-    # Replace 'shortlink_info' with your actual callback function for the Premium button
-    buttons = [
-        [InlineKeyboardButton('Premium', callback_data="shortlink_info")]
-    ]
-
-    reply_markup = InlineKeyboardMarkup(buttons)
-
-    # Use message.message_id instead of query.message.message_id
-    await bot.send_photo(
-        chat_id=chat_id,
-        photo=random.choice(PICS),
-        caption=script.SHORTLINK_INFO.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
-        reply_markup=reply_markup,
-        parse_mode=ParseMode.HTML
-    )
-    
-    await query.answer("This Code Added By Vansh (@None_090)")
+@Client.on_message(filters.private & filters.command(["refer"]))
+async def refer(client,message):
+    reply_markup = InlineKeyboardMarkup(
+       		[ [ InlineKeyboardButton('🎉 premium🎉', callback_data="shortlink_info") ]   ])
+    await message.reply_text(f"Add Your Auto filter bot premium Price and enjoy",reply_to_message_id = message.id,reply_markup=reply_markup,)
     
 
 @Client.on_message(filters.command("remove_tutorial"))
