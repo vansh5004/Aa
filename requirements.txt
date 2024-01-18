@@ -12,6 +12,7 @@ pyrogram>=2.0.30
  pytz 
  aiohttp
 
+
 #---master---# 
  #Telethroid==0.0.10 
  PyLeaves==1.0.2 
@@ -55,6 +56,9 @@ apscheduler
 pyshorteners
 pyromod
 colorama
+
+
+python-telegram-bot
 
 
 
