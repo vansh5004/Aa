@@ -1004,32 +1004,7 @@ async def shortlink(bot, message):
 # add your premium user member telegram user id you are not enter user id /myplan command not work
  #  premium_user_ids = ["2020224264", "5505349428"]  # Add more user IDs as needed
 
-def send_telegram_message(chat_id, message):
-    updater.bot.send_message(chat_id=chat_id, text=message)
 
-#@Client.on_message(filters.command("myplan"))
-#async def myplan(bot,message):
- #   user_id = update.message.from_user.id if message.from_user else None
-  #  if user_id in PREMIUM_USER:
-   #     message = f"ʜᴇʏ {user_id},\n\nYᴏᴜ Hᴀᴠᴇ Aᴄᴛɪᴠᴇ Pʀᴇᴍɪᴜᴍ Pʟᴀɴ. Eɴɪᴏʏ Uɴʟɪᴍɪᴛᴇᴅ Mᴏᴠɪᴇ Wɪᴛʜᴏᴜᴛ Aᴅs."
-    #    send_telegram_message(update.message.chat_id, message)
-  #      sleep(1)  # Sleep for 1 second to avoid rate limiting
-  #  else:
-  #      return
-  #  new_message = "Sorry, you are not a premium user. Upgrade to premium for exclusive content!"
- #   await message.reply_text(new_message)
-    
-
-@Client.on_message(filters.private & filters.command(["myplan"]))
-async def myplan(client,message):
-    user_id = event.from_id
-    if user_id in PREMIUM_USER:
-        message = f"Hey {user_id}, You are subscribed to the premium plan."
-    else:
-        message = "Sorry, you are not a premium user. Subscribe to the premium plan for exclusive content."
-    
-    # Send the message
-    await event.respond(message)
 
 @Client.on_message(filters.command("setshortlinkoff") & filters.user(ADMINS))
 async def offshortlink(bot, message):
@@ -1143,6 +1118,28 @@ async def plan(client,message):
     reply_markup = InlineKeyboardMarkup(
        		[ [ InlineKeyboardButton('Buy Premium',url="https://t.me/none_090") ]   ])
     await message.reply_text(f"🎖️ ᴀᴠᴀɪʟᴀʙʟᴇ ᴘʟᴀɴs \n\n● 10₹ ➛ ʙʀᴏɴᴢᴇ ᴘʟᴀɴ » 7 ᴅᴀʏꜱ\n● 60₹ ➛ ꜱɪʟᴠᴇʀ ᴘʟᴀɴ » 30 ᴅᴀʏꜱ\n● 180₹ ➛ ɢᴏʟᴅ ᴘʟᴀɴ » 90 ᴅᴀʏꜱ\n● 250₹ ➛ ᴘʟᴀᴛɪɴᴜᴍ ᴘʟᴀɴ » 180 ᴅᴀʏꜱ\n● 400₹ ➛ ᴅɪᴀᴍᴏɴᴅ ᴘʟᴀɴ » 365 ᴅᴀʏꜱ\n\n💵 ᴜᴘɪ ɪᴅ - UPI_ID@PAYTM\n\n⚜️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ ʙʏ ᴜꜱɪɴɢ : /myplan\n\n‼️ ᴍᴜsᴛ sᴇɴᴅ sᴄʀᴇᴇɴsʜᴏᴛ ᴀғᴛᴇʀ ᴘᴀʏᴍᴇɴᴛ.",reply_to_message_id = message.id,reply_markup=reply_markup,)
+
+# @Client.on_message(filters.private & filters.command(["myplan"]))
+def my_plan(update: Update, context: CallbackContext) -> None:
+    user_id = update.message.from_user.id
+
+    if user_id in PREMIUM_USER:
+        update.message.reply_text("You are subscribed.")
+    else:
+        update.message.reply_text("You are not subscribed.")
+
+# Define a message handler to check for the /myplan command
+def check_my_plan(update: Update, context: CallbackContext) -> None:
+    user_id = update.message.from_user.id
+
+    if user_id in PREMIUM_USER:
+        update.message.reply_text("You are subscribed.")
+    else:
+        update.message.reply_text("You are not subscribed.")
+
+my_plan_handler = CommandHandler('myplan', my_plan)
+dispatcher.add_handler(my_plan_handler)
+
 
 
 
