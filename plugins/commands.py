@@ -13,7 +13,7 @@ from pyrogram.errors import ChatAdminRequired, FloodWait
 from pyrogram.types import *
 from database.ia_filterdb import Media, get_file_details, unpack_new_file_id, get_bad_files
 from database.users_chats_db import db
-from info import CHANNELS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, PROTECT_CONTENT, CHNL_LNK, GRP_LNK, REQST_CHANNEL, SUPPORT_CHAT_ID, SUPPORT_CHAT, MAX_B_TN, VERIFY, SHORTLINK_API, SHORTLINK_URL, TUTORIAL, IS_TUTORIAL, PREMIUM_USER
+from info import CHANNELS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, PROTECT_CONTENT, CHNL_LNK, GRP_LNK, REQST_CHANNEL, SUPPORT_CHAT_ID, SUPPORT_CHAT, MAX_B_TN, VERIFY, SHORTLINK_API, SHORTLINK_URL, TUTORIAL, IS_TUTORIAL, PREMIUM_USER, PREMIUM_ID
 from utils import get_settings, get_size, is_subscribed, save_group_settings, temp, verify_user, check_token, check_verification, get_token, get_shortlink, get_tutorial
 from database.connections_mdb import active_connection
 # from plugins.pm_filter import ENABLE_SHORTLINK
@@ -1114,31 +1114,38 @@ async def settutorial(bot, message):
 
 
 
-# this plan command code added y vansh yadav telegram username @none_090
 @Client.on_message(filters.private & filters.command(["plan"]))
-async def plan(client,message):
+async def plan(client, message):
     photo_file_id = "https://graph.org/file/66e0fc2970bda9316dd95.jpg"
     reply_markup = InlineKeyboardMarkup(
-       		[ [ InlineKeyboardButton('Buy Premium',url="https://t.me/none_090") ]   ])
-    await message.reply_text(f"🎖️ ᴀᴠᴀɪʟᴀʙʟᴇ ᴘʟᴀɴs \n\n● 10₹ ➛ ʙʀᴏɴᴢᴇ ᴘʟᴀɴ » 7 ᴅᴀʏꜱ\n● 60₹ ➛ ꜱɪʟᴠᴇʀ ᴘʟᴀɴ » 30 ᴅᴀʏꜱ\n● 180₹ ➛ ɢᴏʟᴅ ᴘʟᴀɴ » 90 ᴅᴀʏꜱ\n● 250₹ ➛ ᴘʟᴀᴛɪɴᴜᴍ ᴘʟᴀɴ » 180 ᴅᴀʏꜱ\n● 400₹ ➛ ᴅɪᴀᴍᴏɴᴅ ᴘʟᴀɴ » 365 ᴅᴀʏꜱ\n\n💵 ᴜᴘɪ ɪᴅ - UPI_ID@PAYTM\n\n⚜️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ ʙʏ ᴜꜱɪɴɢ : /myplan\n\n‼️ ᴍᴜsᴛ sᴇɴᴅ sᴄʀᴇᴇɴsʜᴏᴛ ᴀғᴛᴇʀ ᴘᴀʏᴍᴇɴᴛ.",reply_to_message_id = message.id,reply_markup=reply_markup,)
+        [ [ InlineKeyboardButton('Bᴜʏ Pʀᴇᴍɪᴜᴍ', url="https://t.me/none_090") ] ]
+    )
+    
+    message_text = (
+        "🎖️ ᴀᴠᴀɪʟᴀʙʟᴇ ᴘʟᴀɴs\n\n"
+        "● 10₹ ➛ ʙʀᴏɴᴢᴇ ᴘʟᴀɴ » 7 ᴅᴀʏꜱ\n"
+        "● 60₹ ➛ ꜱɪʟᴠᴇʀ ᴘʟᴀɴ » 30 ᴅᴀʏꜱ\n"
+        "● 180₹ ➛ ɢᴏʟᴅ ᴘʟᴀɴ » 90 ᴅᴀʏꜱ\n"
+        "● 250₹ ➛ ᴘʟᴀᴛɪɴᴜᴍ ᴘʟᴀɴ » 180 ᴅᴀʏꜱ\n"
+        "● 400₹ ➛ ᴅɪᴀᴍᴏɴᴅ ᴘʟᴀɴ » 365 ᴅᴀʏꜱ\n\n"
+        "💵 ᴜᴘɪ ɪᴅ - vansh009@fam\n\n"
+        "⚜️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ ʙʏ ᴜꜱɪɴɢ: /myplan\n\n"
+        "‼️ ᴍᴜsᴛ sᴇɴᴅ sᴄʀᴇᴇɴsʜᴏᴛ ᴀғᴛᴇʀ ᴘᴀʏᴍᴇɴᴛ."
+    )
+    
+    # Send the photo and the message
+    await client.send_file(message.chat_id, photo_file_id, caption=message_text, reply_markup=reply_markup)
+    
 
 @Client.on_message(filters.private & filters.command(["myplan"]))
 async def my_plan(client,message):
-    user_id = update.message.from_user.id
 
-    if user_id in PREMIUM_USER:
+    if user_id in PREMIUM_ID:
         update.message.reply_text("You are subscribed.")
     else:
         update.message.reply_text("You are not subscribed.")
 
-# Define a message handler to check for the /myplan command
-def check_my_plan(update: Update, context: CallbackContext) -> None:
-    user_id = update.message.from_user.id
 
-    if user_id in PREMIUM_USER:
-        update.message.reply_text("You are subscribed.")
-    else:
-        update.message.reply_text("You are not subscribed.")
 
 # my_plan_handler = CommandHandler('myplan', my_plan)
 # dispatcher.add_handler(my_plan_handler)
