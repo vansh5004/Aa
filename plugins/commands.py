@@ -1143,7 +1143,7 @@ async def myplan(client, message):
         [ [ InlineKeyboardButton('Bᴜʏ Pʀᴇᴍɪᴜᴍ', callback_data="shortlink_info") ] ]
     )
     
-    message_text = (You are Not Subcribed My Premium Click Here /plan and buy premium)
+    message_text = "You are Not Subscribed to My Premium. Click Here to /plan and buy premium"
     
     # Send the photo and the message
     await client.send_file(message.chat_id, photo_file_id, caption=message_text, reply_markup=reply_markup)
