@@ -1116,28 +1116,17 @@ async def settutorial(bot, message):
 
 @Client.on_message(filters.private & filters.command(["plan"]))
 async def plan(client, message):
-    photo_file_id = "https://graph.org/file/66e0fc2970bda9316dd95.jpg"
     reply_markup = InlineKeyboardMarkup(
         [ [ InlineKeyboardButton('Bᴜʏ Pʀᴇᴍɪᴜᴍ', url="https://t.me/none_090") ] ]
     )
     
-    message_text = (
-        "🎖️ ᴀᴠᴀɪʟᴀʙʟᴇ ᴘʟᴀɴs\n\n"
-        "● 10₹ ➛ ʙʀᴏɴᴢᴇ ᴘʟᴀɴ » 7 ᴅᴀʏꜱ\n"
-        "● 60₹ ➛ ꜱɪʟᴠᴇʀ ᴘʟᴀɴ » 30 ᴅᴀʏꜱ\n"
-        "● 180₹ ➛ ɢᴏʟᴅ ᴘʟᴀɴ » 90 ᴅᴀʏꜱ\n"
-        "● 250₹ ➛ ᴘʟᴀᴛɪɴᴜᴍ ᴘʟᴀɴ » 180 ᴅᴀʏꜱ\n"
-        "● 400₹ ➛ ᴅɪᴀᴍᴏɴᴅ ᴘʟᴀɴ » 365 ᴅᴀʏꜱ\n\n"
-        "💵 ᴜᴘɪ ɪᴅ - vansh009@fam\n\n"
-        "⚜️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ ʙʏ ᴜꜱɪɴɢ: /myplan\n\n"
-        "‼️ ᴍᴜsᴛ sᴇɴᴅ sᴄʀᴇᴇɴsʜᴏᴛ ᴀғᴛᴇʀ ᴘᴀʏᴍᴇɴᴛ."
-    )
+    message_text = (🎖️ ᴀᴠᴀɪʟᴀʙʟᴇ ᴘʟᴀɴs\n\n● 10₹ ➛ ʙʀᴏɴᴢᴇ ᴘʟᴀɴ » 7 ᴅᴀʏꜱ\n● 60₹ ➛ ꜱɪʟᴠᴇʀ ᴘʟᴀɴ » 30 ᴅᴀʏꜱ\n● 180₹ ➛ ɢᴏʟᴅ ᴘʟᴀɴ » 90 ᴅᴀʏꜱ\n● 250₹ ➛ ᴘʟᴀᴛɪɴᴜᴍ ᴘʟᴀɴ » 180 ᴅᴀʏꜱ\n● 400₹ ➛ ᴅɪᴀᴍᴏɴᴅ ᴘʟᴀɴ » 365 ᴅᴀʏꜱ\n\n💵 ᴜᴘɪ ɪᴅ - vansh009@fam\n\n⚜️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ ʙʏ ᴜꜱɪɴɢ: /myplan\n\n‼️ ᴍᴜsᴛ sᴇɴᴅ sᴄʀᴇᴇɴsʜᴏᴛ ᴀғᴛᴇʀ ᴘᴀʏᴍᴇɴᴛ.)
     
     # Send the photo and the message
-    await client.send_photo(message.chat_id, photo_file_id, caption=message_text, reply_markup=reply_markup)
+    await client.send_photo(message.chat_id, caption=message_text, reply_markup=reply_markup)
 
-@Client.on_callback_query(filters.regex('myplan'))
-async def myplan(bot,update,message):
+@Client.on_callback_query(filters.regex(["myplan"]))
+async def myplan(client,message):
     photo_file_id = "https://graph.org/file/66e0fc2970bda9316dd95.jpg"
     reply_markup = InlineKeyboardMarkup(
         [ [ InlineKeyboardButton('Bᴜʏ Pʀᴇᴍɪᴜᴍ', callback_data="shortlink_info") ] ]
