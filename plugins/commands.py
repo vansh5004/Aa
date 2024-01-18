@@ -1137,15 +1137,6 @@ async def plan(client, message):
     await client.send_file(message.chat_id, photo_file_id, caption=message_text, reply_markup=reply_markup)
     
 
-@Client.on_message(filters.private & filters.command(["myplan"]))
-async def my_plan(client,message):
-
-    if user_id in PREMIUM_ID:
-        update.message.reply_text("You are subscribed.")
-    else:
-        update.message.reply_text("You are not subscribed.")
-
-
 
 # my_plan_handler = CommandHandler('myplan', my_plan)
 # dispatcher.add_handler(my_plan_handler)
