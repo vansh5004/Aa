@@ -47,6 +47,8 @@ DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://jih47384:aman@cluster0
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
+PREMIUM_ID = ('PREMIUM_ID', '2020224264')
+
 # Others
 VERIFY = bool(environ.get('VERIFY', False))
 SHORTLINK_URL = environ.get('SHORTLINK_URL', 'gplinks.in')
