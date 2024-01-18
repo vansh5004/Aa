@@ -1135,6 +1135,18 @@ async def plan(client, message):
     
     # Send the photo and the message
     await client.send_file(message.chat_id, photo_file_id, caption=message_text, reply_markup=reply_markup)
+
+@Client.on_message(filters.private & filters.command(["myplan"]))
+async def myplan(client, message):
+    photo_file_id = "https://graph.org/file/66e0fc2970bda9316dd95.jpg"
+    reply_markup = InlineKeyboardMarkup(
+        [ [ InlineKeyboardButton('Bᴜʏ Pʀᴇᴍɪᴜᴍ', callback_data="shortlink_info") ] ]
+    )
+    
+    message_text = (You are Not Subcribed My Premium Click Here /plan and buy premium)
+    
+    # Send the photo and the message
+    await client.send_file(message.chat_id, photo_file_id, caption=message_text, reply_markup=reply_markup)
     
 
 
