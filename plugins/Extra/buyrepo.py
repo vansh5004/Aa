@@ -1,5 +1,6 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
+from pyrogram import Client, filters
 
 # Replace 'YOUR_BOT_TOKEN' with your actual bot token
 # updater = Updater(token='YOUR_BOT_TOKEN', use_context=True)
