@@ -2,7 +2,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 
 # Replace 'YOUR_BOT_TOKEN' with your actual bot token
-updater = Updater(token='YOUR_BOT_TOKEN', use_context=True)
+# updater = Updater(token='YOUR_BOT_TOKEN', use_context=True)
 
 # Dictionary to store user payment requests
 payment_requests = {}
