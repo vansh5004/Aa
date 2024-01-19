@@ -6,7 +6,7 @@ from info import BOT_TOKEN
 
 
 # Replace 'YOUR_BOT_TOKEN' with your actual bot token
-updater = Updater(token=BOT_TOKEN, use_context=True)
+# updater = Updater(token=BOT_TOKEN, use_context=True)
 
 # Dictionary to store user payment requests
 payment_requests = {}
