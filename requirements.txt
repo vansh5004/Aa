@@ -58,7 +58,7 @@ pyromod
 colorama
 
 # Don't Remove This Code ( You are remove this code your /pan /myplan / buy_repo command not work )
-pip install aiogram==3.3.0
+aiogram==3.3.0
 python-telegram-bot
 
 
