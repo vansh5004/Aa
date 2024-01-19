@@ -5,9 +5,9 @@ from datetime import datetime, timedelta
 from info import BOT_TOKEN, ADMINS
 
 # Define your token here
-TOKEN = BOT_TOKEN
+# TOKEN = BOT_TOKEN
 
-updater = Updater(token=TOKEN, use_context=True)
+# updater = Updater(token=TOKEN, use_context=True)
 
 # Replace with the actual admin user ID
 ADMIN_USER_ID = ADMINS  # Replace with the admin's user ID
