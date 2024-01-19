@@ -1,8 +1,12 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
+from info import BOT_TOKEN
+
+
+
 
 # Replace 'YOUR_BOT_TOKEN' with your actual bot token
-updater = Updater(token='YOUR_BOT_TOKEN', use_context=True)
+updater = Updater(token=BOT_TOKEN, use_context=True)
 
 # Dictionary to store user payment requests
 payment_requests = {}
@@ -63,5 +67,5 @@ updater.dispatcher.add_handler(MessageHandler(Filters.regex('Not Receive'), not_
 updater.dispatcher.add_handler(MessageHandler(Filters.regex('Received'), payment_received))
 
 # Start the bot
-updater.start_polling()
-updater.idle()
+# updater.start_polling()
+# updater.idle()
