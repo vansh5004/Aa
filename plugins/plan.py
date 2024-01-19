@@ -4,8 +4,8 @@ from telegram.ext.dispatcher import run_async
 from datetime import datetime, timedelta
 
 # Define your token here
-TOKEN = "6726031505:AAEM2q-VJOqql7_LYBX-uRtcQMtg5b0lA2U"
-updater = Updater(token=TOKEN, use_context=True)
+# TOKEN = "6726031505:AAEM2q-VJOqql7_LYBX-uRtcQMtg5b0lA2U"
+# updater = Updater(token=TOKEN, use_context=True)
 
 # Replace with the actual admin user ID
 ADMIN_USER_ID = 2020224264  # Replace with the admin's user ID
@@ -135,8 +135,8 @@ def main() -> None:
     dp.add_handler(CommandHandler("myplan", myplan))
     dp.add_handler(CommandHandler("userpremium", userpremium))
 
-    updater.start_polling()
-    updater.idle()
+#    updater.start_polling()
+#    updater.idle()
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#    main()
