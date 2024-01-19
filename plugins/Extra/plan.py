@@ -2,13 +2,15 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 from telegram.ext.dispatcher import run_async
 from datetime import datetime, timedelta
+from info import BOT_TOKEN, ADMINS
 
 # Define your token here
-TOKEN = "6726031505:AAEM2q-VJOqql7_LYBX-uRtcQMtg5b0lA2U"
+TOKEN = BOT_TOKEN
+
 updater = Updater(token=TOKEN, use_context=True)
 
 # Replace with the actual admin user ID
-ADMIN_USER_ID = 2020224264  # Replace with the admin's user ID
+ADMIN_USER_ID = ADMINS  # Replace with the admin's user ID
 
 # Dictionary to store plans and purchase time for each user
 user_plans = {}
@@ -135,8 +137,8 @@ def main() -> None:
     dp.add_handler(CommandHandler("myplan", myplan))
     dp.add_handler(CommandHandler("userpremium", userpremium))
 
-    updater.start_polling()
-    updater.idle()
+ #   updater.start_polling()
+  #  updater.idle()
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+   # main()
