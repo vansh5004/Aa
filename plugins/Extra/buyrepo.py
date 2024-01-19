@@ -1,7 +1,8 @@
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.types import CallbackQuery
-from aiogram.utils import executor
+# from aiogram.utils import executor
+from aiogram import executor
 from info import BOT_TOKEN
 
 bot = Bot(token=BOT_TOKEN)
