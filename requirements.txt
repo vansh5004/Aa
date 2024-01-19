@@ -58,8 +58,8 @@ pyromod
 colorama
 
 # Don't Remove This Code ( You are remove this code your /pan /myplan / buy_repo command not work )
-aiogram
-python-telegram-bot
+# aiogram
+# python-telegram-bot
 
 
 
