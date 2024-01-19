@@ -25,13 +25,33 @@ plans = {
 def start(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("Hello! Use /plan to see available plans.")
 
+# def plan(update: Update, context: CallbackContext) -> None:
+#    # Display available plans
+#    plan_text = "Available plans:\n"
+#    for plan_name, plan_details in plans.items():
+#        plan_text += f"{plan_name} - {plan_details['price']}rs\n"
+#    update.message.reply_text(photo=photo_url, plan_text)
+
 def plan(update: Update, context: CallbackContext) -> None:
-    # Display available plans
+    # Display available plans with a photo and buttons
     plan_text = "Available plans:\n"
-    photo_url = 'https://graph.org/file/f8c26a2bda2c9ca9c6871.jpg'
     for plan_name, plan_details in plans.items():
         plan_text += f"{plan_name} - {plan_details['price']}rs\n"
-    update.message.reply_text(photo=photo_url, plan_text)
+
+    # Replace 'your_photo_url' with the actual URL of the photo you want to display
+    photo_url = 'https://graph.org/file/698ddcb0c7d02af60151b.jpg'
+    update.message.reply_photo(photo=photo_url, caption=plan_text, reply_markup=get_plan_keyboard())
+
+def get_plan_keyboard():
+    # Create buttons for each plan
+    keyboard = [
+        [InlineKeyboardButton(plan_name, callback_data=f'buy_plan_{plan_name}') for plan_name in plans.keys()]
+    ]
+
+    # Add the keyboard to the message
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    return reply_markup
+    
 
 def buy_plan(update: Update, context: CallbackContext) -> None:
     # Get the user's input after the /buyplan command
