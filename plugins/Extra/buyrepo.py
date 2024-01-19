@@ -1,20 +1,15 @@
-from aiogram import Bot, Dispatcher, types
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from aiogram.types import CallbackQuery
-# from aiogram.utils import executor
-from aiogram import executor
-from info import BOT_TOKEN
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 
-bot = Bot(token=BOT_TOKEN)
-dp = Dispatcher(bot)
+# Replace 'YOUR_BOT_TOKEN' with your actual bot token
+updater = Updater(token='YOUR_BOT_TOKEN', use_context=True)
 
 # Dictionary to store user payment requests
 payment_requests = {}
 
-
-@dp.message_handler(commands=['buy_repo'])
-async def buy_repo(message: types.Message):
-    user_id = message.from_user.id
+@updater.message_handler(filters.private & filters.command(["buy_repo"]))
+def buy_repo_command_handler(update: Update, context: CallbackContext):
+    user_id = update.effective_user.id
 
     # Generate QR code and UPI details (replace with your logic)
     qr_code_url = "https://graph.org/file/187cd4a45be90ef91d261.jpg"
@@ -28,12 +23,14 @@ async def buy_repo(message: types.Message):
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     # Send the QR code and UPI details to the user
-    await message.reply_text(f"Scan the QR code or use the provided UPI details for payment:", reply_markup=reply_markup)
+    update.message.reply_text(f"Scan the QR code or use the provided UPI details for payment:", reply_markup=reply_markup)
 
+    # Show an alert to the user
+    # Note: The context.bot method is used directly instead of update.callback_query
+    context.bot.answer_callback_query(update.callback_query.id, text="Payment request sent. Please wait for admin approval.")
 
-@dp.callback_query_handler(lambda c: c.data == 'payment_done')
-async def payment_done(callback_query: CallbackQuery):
-    user_id = callback_query.from_user.id
+def payment_done_command_handler(update: Update, context: CallbackContext):
+    user_id = update.effective_user.id
 
     # Inform the admin about the payment request
     admin_user_id = "2020224264"  # Replace with the actual admin user ID
@@ -43,26 +40,31 @@ async def payment_done(callback_query: CallbackQuery):
         [InlineKeyboardButton("Not Receive", callback_data='not_received')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await bot.send_message(chat_id=admin_user_id, text=admin_message, reply_markup=reply_markup)
+    context.bot.send_message(chat_id=admin_user_id, text=admin_message, reply_markup=reply_markup)
 
-
-@dp.callback_query_handler(lambda c: c.data == 'not_received')
-async def not_received(callback_query: CallbackQuery):
-    user_id = callback_query.from_user.id
+def not_received_command_handler(update: Update, context: CallbackContext):
+    user_id = update.effective_user.id
 
     # Send a message to the user indicating that the admin did not receive the payment
     user_message = "Your payment request was not received by the admin. Please contact the admin for further assistance."
-    await bot.send_message(chat_id=user_id, text=user_message)
+    context.bot.send_message(chat_id=user_id, text=user_message)
 
-
-@dp.callback_query_handler(lambda c: c.data == 'payment_received')
-async def payment_received(callback_query: CallbackQuery):
-    user_id = callback_query.from_user.id
+def payment_received_command_handler(update: Update, context: CallbackContext):
+    user_id = update.effective_user.id
 
     # Send the GitHub link to the user
     github_link = "https://github.com/htmlboss123/PiroAutoFilterBot/"
-    await bot.send_message(chat_id=user_id, text=f"Congratulations! 🔥 GitHub link: {github_link}")
+    update.message.reply_text(f"Congratulations! 🔥 GitHub link: {github_link}")
 
+# Command handlers
+updater.dispatcher.add_handler(buy_repo_command_handler)
 
-if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
+# Callback query handlers
+# Note: Callback query handlers should be added separately using CallbackQueryHandler
+updater.dispatcher.add_handler(CallbackQueryHandler(payment_done_command_handler, pattern='payment_done'))
+updater.dispatcher.add_handler(CallbackQueryHandler(not_received_command_handler, pattern='not_received'))
+updater.dispatcher.add_handler(CallbackQueryHandler(payment_received_command_handler, pattern='payment_received'))
+
+# Start the bot
+# updater.start_polling()
+# updater.idle()
